@@ -1,6 +1,16 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
+#define servo1 0
+#define servo2 1
+#define servo3 2
+#define servo4 3
+#define servo5 4
+#define servo6 5
+#define servo7 6
+#define servo8 7
+#define servo9 8
+
 const int MAX_ARRAY_SIZE = 12; // Maximum number of elements in the array
 int myArray[MAX_ARRAY_SIZE];   // Array to store the input values
 int arraySize = 0;             // Number of elements in the array
@@ -8,6 +18,8 @@ int arraySize = 0;             // Number of elements in the array
 void parseInput(String input);
 
 Adafruit_PWMServoDriver driver = Adafruit_PWMServoDriver();
+
+void Servo_2_Angle(char servo,int angle);
 
 void setup() {
   // put your setup code here, to run once:
@@ -50,7 +62,8 @@ void loop() {
     parseInput(input);
     
     for (int i = 0; i < arraySize; i++) {
-      driver.writeMicroseconds(i, myArray[i]);
+      // driver.writeMicroseconds(i, myArray[i]);
+      Servo_2_Angle(i, myArray[i]);
     }
   }
 }
@@ -71,4 +84,47 @@ void parseInput(String input) {
   if (arraySize < MAX_ARRAY_SIZE) {
     myArray[arraySize++] = input.substring(startIndex).toInt();
   }
+}
+
+
+void Servo_2_Angle(char servo,int angle) {
+  int val;
+  switch(servo) {
+    case servo1:
+      val = map(angle, 0, 180, 375, 2770);
+      break;
+
+    case servo2:
+      val = map(angle, 0, 180, 375, 2770);
+      break;
+
+    case servo3:
+      val = map(angle, 0, 180, 375, 2770);
+      break;
+
+    case servo4:
+      val = map(angle, 0, 180, 375, 2775); // 375, 2780
+      break;
+
+    case servo5:
+      val = map(angle, 0, 180, 375, 2785);
+      break;
+
+    case servo6:
+      val = map(angle, 0, 180, 375, 2770);
+      break;
+
+    case servo7:
+      val = map(angle, 0, 180, 375, 2770);
+      break;
+
+    case servo8:
+      val = map(angle, 0, 180, 375, 2785);
+      break;
+
+    case servo9:
+      val = map(angle, 0, 180, 375, 2780);
+      break;
+  }
+  driver.writeMicroseconds(servo, val);
 }
