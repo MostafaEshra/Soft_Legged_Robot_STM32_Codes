@@ -349,31 +349,31 @@ void read_tof(){
       break;
 
     case servo3:
-      val = map(angle, 0, 200, 800, 2770);
+      val = map(angle, 0, 200, 400, 2770);
       break;
 
     case servo4:
-      val = map(angle, 0, 180, 400, 2775); // 375, 2780
+      val = map(angle, 0, 200, 400, 2775); // 375, 2780
       break;
 
     case servo5:
-      val = map(angle, 0, 180, 600, 2785);
+      val = map(angle, 0, 200, 400, 2785);
       break;
 
     case servo6:
-      val = map(angle, 0, 180, 400, 2770);
+      val = map(angle, 0, 200, 400, 2770);
       break;
 
     case servo7:
-      val = map(angle, 0, 180, 600, 2770);
+      val = map(angle, 0, 200, 400, 2770);
       break;
 
     case servo8:
-      val = map(angle, 0, 180, 400, 2785);
+      val = map(angle, 0, 200, 400, 2785);
       break;
 
     case servo9:
-      val = map(angle, 0, 180, 400, 2780);
+      val = map(angle, 0, 200, 400, 2780);
       break;
   }
   driver.writeMicroseconds(servo, val);
